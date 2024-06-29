@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <header className="sticky z-20 w-full bg-light-brown top-0  text-white p-2 drop-shadow-lg flex items-center justify-between">
+    <header className="sticky z-20 w-full bg-light-brown top-0  text-white p-4 drop-shadow-lg flex items-center justify-between">
       <Link href={"/"} className="text-4xl font-semibold  ml-24">
         Portal News
       </Link>
