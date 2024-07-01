@@ -1,11 +1,7 @@
-import Header from "@/components/header";
-import TopicsNav from "@/components/topics_nav";
+import PageLayout from "@/components/page_layout";
+import { Topic } from "@/types/news";
 
 export default function Home() {
-  return (
-    <div className="min-h-screen w-full bg-background-white">
-      <Header />
-      <TopicsNav />
-    </div>
-  );
+  const newsType = "BREAKING_NEWS";
+  return <PageLayout type={newsType} />;
 }

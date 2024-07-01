@@ -6,7 +6,7 @@ export default function Header() {
       <Link href={"/"} className="text-4xl font-semibold  ml-24">
         Portal News
       </Link>
-      <div className="hover:scale-105 right-0 duration-300 rounded-full h-16 w-16 border-2 mr-24 bg-white "></div>
+      <div className="hover:scale-105 cursor-pointer right-0 duration-300 rounded-full h-16 w-16 border-2 mr-24 bg-white "></div>
     </header>
   );
 }
