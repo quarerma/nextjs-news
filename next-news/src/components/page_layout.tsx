@@ -13,7 +13,10 @@ export default function PageLayout({ type }: NewsProps) {
     <div className="min-h-screen w-full bg-background-white">
       <Header />
       <TopicsNav />
-      <NewsFeed news={news} title="Manchetes" />
+      <NewsFeed
+        news={news}
+        title={`${type.charAt(0).toUpperCase()}${type.slice(1).toLowerCase()}`}
+      />
     </div>
   );
 }
