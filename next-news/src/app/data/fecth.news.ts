@@ -5,3 +5,8 @@ export function getNewsByTopic(type: string) {
   const topic = Topic[type as keyof typeof Topic];
   return newsFeed.filter((news) => news.type.includes(topic));
 }
+
+export function getNewsById(id: string) {
+  console.log(id);
+  return newsFeed.find((news) => news.id === id);
+}
