@@ -4,7 +4,7 @@ export type News = {
   image_url: string;
   promoteText: string;
   author: string;
-  publishedAt: Date;
+  createdAt: Date;
   content: string;
   type: Topic[];
 };

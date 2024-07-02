@@ -1,4 +1,4 @@
-import { News, newsFeed } from "@/types/news";
+import { News } from "@/types/news";
 import request, { gql } from "graphql-request";
 
 const api_url =
@@ -10,14 +10,41 @@ const headers = {
 
 export async function getNewsByTopic(topic: string) {
   try {
-    console.log("entrou");
     const query = gql`
       query NewsList {
         news_(where: {topic_contains_some: ${topic}}) {
           id
           imageUrl
           promoteText
-          publishedAt
+          createdAt
+          title
+          topic
+          author
+          content {
+            html
+          }
+        }
+      }
+    `;
+
+    const response = await request(`${api_url}`, query);
+    console.log("response", response);
+    return response.news_ as News[];
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export async function getNewsById(id: string) {
+  try {
+    console.log("id", id);
+    const query = gql`
+      query List {
+        news_(where: { id: "${id}" }) {
+          id
+          imageUrl
+          promoteText
+          createdAt
           title
           topic
           author
@@ -30,14 +57,8 @@ export async function getNewsByTopic(topic: string) {
 
     const response = await request(`${api_url}`, query);
 
-    console.log(response.news_);
-    return response.news_ as News[];
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-export function getNewsById(id: string) {
-  console.log(id);
-  // return newsFeed.find((news) => news.id === id);
+    const news = response.news_ as News[];
+    console.log("news", news[0]);
+    return news[0];
+  } catch (error) {}
 }

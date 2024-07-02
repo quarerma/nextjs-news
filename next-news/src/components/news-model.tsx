@@ -10,8 +10,8 @@ interface NewsProps {
 }
 
 export default function NewsModel({ news }: NewsProps) {
-  const formatDate = formatDistanceToNowStrict(news.publishedAt, {
-    locale: ptBR, // Using the imported locale
+  const formatDate = formatDistanceToNowStrict(news.createdAt, {
+    locale: ptBR,
   });
   return (
     <div className="flex gap-x-6 relative">
