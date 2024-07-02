@@ -29,7 +29,7 @@ export default function NewsModel({ news }: NewsProps) {
           {news.title}
         </Link>
         <h1 className="text-[1.3rem] font-light">Há {formatDate}</h1>
-        <p className="text-[1.3rem] ">{news.promote_text}</p>
+        <p className="text-[1.3rem] ">{news.promoteText}</p>
         <div className="absolute bottom-0 right-0 mb-3 mr-3">
           <Link href={`/news/${news.id}`} className="font-extrabold text-lg">
             Confira mais {"->"}

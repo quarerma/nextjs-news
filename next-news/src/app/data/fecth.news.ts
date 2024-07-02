@@ -39,5 +39,5 @@ export async function getNewsByTopic(topic: string) {
 
 export function getNewsById(id: string) {
   console.log(id);
-  return newsFeed.find((news) => news.id === id);
+  // return newsFeed.find((news) => news.id === id);
 }
