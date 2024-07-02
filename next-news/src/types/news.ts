@@ -2,7 +2,7 @@ export type News = {
   title: string;
   id: string;
   image_url: string;
-  promoter: string;
+  promote_text: string;
   author: string;
   publishedAt: Date;
   content: string;
@@ -14,7 +14,7 @@ export enum Topic {
   international,
   economy,
   technology,
-  BREAKING_NEWS,
+  manchetes,
 }
 
 export const newsFeed: News[] = [
@@ -23,7 +23,7 @@ export const newsFeed: News[] = [
     id: "new-advances-in-ai-technology",
     image_url:
       "https://unsplash.com/photos/a-bunch-of-balloons-that-are-shaped-like-email-7NT4EDSI5Ok",
-    promoter:
+    promote_text:
       "This article explores the latest advances in AI technology, highlighting the potential impacts on various industries.",
     author: "Jane Doe",
     publishedAt: new Date("2023-04-01T10:00:00Z"),
@@ -37,7 +37,7 @@ export const newsFeed: News[] = [
     id: "global-economic-outlook-202",
     image_url:
       "https://unsplash.com/photos/a-bunch-of-balloons-that-are-shaped-like-email-7NT4EDSI5Ok",
-    promoter:
+    promote_text:
       "An in-depth analysis of the global economic outlook for 2023, examining key trends and predictions.",
     author: "John Smith",
     publishedAt: new Date("2023-04-02T09:00:00Z"),
@@ -49,11 +49,11 @@ export const newsFeed: News[] = [
     id: "breaking-news-peace-agreement-signed",
     image_url:
       "https://unsplash.com/photos/a-bunch-of-balloons-that-are-shaped-like-email-7NT4EDSI5Ok",
-    promoter:
+    promote_text:
       "A historic peace agreement has been signed, bringing an end to the long-standing conflict.",
     author: "World News Network",
     publishedAt: new Date("2023-04-03T11:30:00Z"),
     content: "",
-    type: [Topic.BREAKING_NEWS, Topic.international],
+    type: [Topic.manchetes, Topic.international],
   },
 ];
