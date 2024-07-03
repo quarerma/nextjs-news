@@ -1,4 +1,4 @@
-import { getNewsByTopic } from "@/app/data/fecth.news";
+import { getNewsByTopic } from "@/data/fecth.news";
 import Header from "@/components/header";
 import NewsFeed from "@/components/news_feed";
 import TopicsNav from "@/components/topics_nav";

@@ -27,8 +27,8 @@ export async function getNewsByTopic(topic: string) {
       }
     `;
 
-    const response = await request(`${api_url}`, query);
-    console.log("response", response);
+    const response = await request(`${process.env.API_URL}`, query);
+
     return response.news_ as News[];
   } catch (error) {
     console.error(error);
@@ -37,7 +37,6 @@ export async function getNewsByTopic(topic: string) {
 
 export async function getNewsById(id: string) {
   try {
-    console.log("id", id);
     const query = gql`
       query List {
         news_(where: { id: "${id}" }) {
@@ -55,10 +54,10 @@ export async function getNewsById(id: string) {
       }
     `;
 
-    const response = await request(`${api_url}`, query);
+    const response = await request(`${process.env.API_URL}`, query);
 
     const news = response.news_ as News[];
-    console.log("news", news[0]);
+
     return news[0];
   } catch (error) {}
 }
