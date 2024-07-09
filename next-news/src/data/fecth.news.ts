@@ -1,5 +1,6 @@
+import { getClient } from "@/server/apollo-client";
 import { News } from "@/types/news";
-import request, { gql } from "graphql-request";
+import { gql } from "@apollo/client";
 
 const api_url =
   "https://api-sa-east-1.hygraph.com/v2/cly38l4z300ew07w10fk9ozzo/master";
@@ -27,17 +28,28 @@ export async function getNewsByTopic(topic: string) {
       }
     `;
 
-    const response = await request(`${process.env.API_URL}`, query);
+    const client = getClient();
 
-    return response.news_ as News[];
+    const { data } = await client.query({
+      query: query,
+      context: {
+        fetchOptions: {
+          next: {
+            revalidate: 30,
+          },
+        },
+      },
+    });
+
+    return data.news_ as News[];
   } catch (error) {
-    console.error(error);
+    console.log(error);
   }
 }
 
 export async function getNewsById(id: string) {
   try {
-    const query = gql`
+    const NEWS_QUERY = gql`
       query List {
         news_(where: { id: "${id}" }) {
           id
@@ -54,10 +66,23 @@ export async function getNewsById(id: string) {
       }
     `;
 
-    const response = await request(`${process.env.API_URL}`, query);
+    const client = getClient();
 
-    const news = response.news_ as News[];
+    const { data } = await client.query({
+      query: NEWS_QUERY,
+      context: {
+        fetchOptions: {
+          next: {
+            revalidate: 30,
+          },
+        },
+      },
+    });
+
+    const news = data.news_ as News[];
 
     return news[0];
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 }
